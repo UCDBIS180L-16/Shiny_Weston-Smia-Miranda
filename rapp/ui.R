@@ -12,8 +12,10 @@ shinyUI(navbarPage("RAPP",
                    tabPanel("Scatter Plot",
                             sidebarLayout(
                               sidebarPanel(
-                                radioButtons("Trait", "Select your first trait", c("Alu.Tol", "Plant.height", "Seed.number.per.panicle"),
-                                radioButtons("Trait", "Select your Second trait", c("Alu.Tol", "Plant.height", "Seed.number.per.panicle")
+                                radioButtons("ax1", "Select your first trait", c("Alu.Tol", "Plant.height", "Seed.number.per.panicle"),
+                                radioButtons("ax2", "Select your Second trait", c("Alu.Tol", "Plant.height", "Seed.number.per.panicle"),
+                                radioButtons("color", "Select your feature", c("popID", "Region"),
+                                sliderInput("slider", "Select your color scheme", min=1, max=360, value=360)
                                 )
                               ),
                               mainPanel(
