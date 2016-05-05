@@ -9,15 +9,15 @@
 library(markdown)
 
 shinyUI(navbarPage("RAPP",
-                   tabPanel("Plot",
+                   tabPanel("Scatter Plot",
                             sidebarLayout(
                               sidebarPanel(
-                                radioButtons("plotType", "Plot type",
-                                             c("Scatter"="p", "Line"="l")
+                                radioButtons("Trait", "Select your first trait", c("Alu.Tol", "Plant.height", "Seed.number.per.panicle"),
+                                radioButtons("Trait", "Select your Second trait", c("Alu.Tol", "Plant.height", "Seed.number.per.panicle")
                                 )
                               ),
                               mainPanel(
-                                plotOutput("plot")
+                                plotOutput("scatter")
                               )
                             )
                    ),
