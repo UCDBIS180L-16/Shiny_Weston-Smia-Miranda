@@ -24,8 +24,8 @@ shinyUI(navbarPage("RAPP",
                    tabPanel("Box Plot",
                             sidebarLayout(
                               sidebarPanel(
-                                radioButtons("ax1", "Select your Feature", c("popID", "Region")),
-                                radioButtons("ax2", "Select your Trait", c("Alu.Tol", "Plant.height", "Seed.number.per.panicle"))
+                                radioButtons("ab1", "Select your Feature", c("popID", "Region")),
+                                radioButtons("ab2", "Select your Trait", c("Alu.Tol", "Plant.height", "Seed.number.per.panicle"))
                               ),
                               mainPanel(plotOutput("box")
                               )

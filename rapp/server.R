@@ -22,15 +22,13 @@ shinyServer(function(input, output) {
       plt + geom_point(na.rm = TRUE)+ggtitle(paste("Scatterplot of", x,"and",y,"by", input$color, sep = " "))+scale_color_hue(c = input$slider)
   })
   output$summary <- renderPrint({
-    x <- input$ax1
-    y <- input$ax2
-    Group <- input$color
-    sub <- data.phenomds[,c(x,y,Group)]
-    summary(sub)
+    summary(data.phenomds)
   })
-#  output$box <- renderPlot({
-#      sub <- data.phenomds[,c(input$ax1,input$ax2)]   # ax1 is discrete
-#      plt <- ggplot(aes(x=input$ax1, y=input$ax2, color=input$ax1), data=sub)
-#      plt <- plt + geom_boxplot()+ggtitle(paste("Box plot of", input$ax2,"by", input$ax1, sep = " "))+scale_color_hue(c = input$slider)
-#  })
+  output$box <- renderPlot({
+      #x <- input$ax1
+      #y <- input$ax2
+      sub <- data.phenomds[,c(input$ab1,input$ab2)]   # ax1 is discrete
+      plt <- ggplot(aes_string(x=input$ab1, y=input$ab2, color=input$ab1), data=sub)
+      plt + geom_boxplot()+ggtitle(paste("Box plot of", input$ab2,"by", input$ab1, sep = " "))
+  })
 })
