@@ -9,14 +9,17 @@
 
 library(shiny)
 library(ggplot2)
-data.phenomds <- load("SNP_lab_data.Rdata")
+load("~/Shiny_Weston-Smia-Miranda/SNP_lab_data.Rdata")
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
   output$scatter <- renderPlot({
-      sub <- data.phenomds[,c(input$color,input$ax1,input$ax2)]
-      plt <- ggplot(sub, aes(input$ax1,input$ax2,color = input$color))
-      plt <- plt + geom_point()+ggtitle(paste("Scatterplot of", input$ax1,"and",input$ax2,"by", input$color, sep = " "))+scale_color_hue(c = input$slider)
+      x <- input$ax1
+      y <- input$ax2
+      Group <- input$color
+      sub <- data.phenomds[,c(x,y,Group)]
+      plt <- ggplot(data = sub, aes(x,y,color = Group))
+      plt + geom_point(na.rm = TRUE)+ggtitle(paste("Scatterplot of", x,"and",y,"by", input$color, sep = " "))+scale_color_hue(c = input$slider)
   })
   output$summary <- renderPrint({
     summary(data.phenomds)
