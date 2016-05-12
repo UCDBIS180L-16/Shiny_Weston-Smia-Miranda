@@ -9,7 +9,7 @@
 
 library(shiny)
 library(ggplot2)
-load("~/Shiny_Weston-Smia-Miranda/SNP_lab_data.Rdata")
+load("SNP_lab_data.Rdata")
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
