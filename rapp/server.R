@@ -18,11 +18,15 @@ shinyServer(function(input, output) {
       y <- input$ax2
       Group <- input$color
       sub <- data.phenomds[,c(x,y,Group)]
-      plt <- ggplot(data = sub, aes(x,y,color = Group))
+      plt <- ggplot(data = sub, aes_string(x,y,color = Group))
       plt + geom_point(na.rm = TRUE)+ggtitle(paste("Scatterplot of", x,"and",y,"by", input$color, sep = " "))+scale_color_hue(c = input$slider)
   })
   output$summary <- renderPrint({
-    summary(data.phenomds)
+    x <- input$ax1
+    y <- input$ax2
+    Group <- input$color
+    sub <- data.phenomds[,c(x,y,Group)]
+    summary(sub)
   })
 #  output$box <- renderPlot({
 #      sub <- data.phenomds[,c(input$ax1,input$ax2)]   # ax1 is discrete
